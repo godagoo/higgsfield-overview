@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Higgsfield AI - Complete Platform Overview</title>
 
-  <!-- Google Fonts - Autonomee Style -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Reveal.js -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
@@ -18,187 +18,606 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
+/*
+ * Dark Tech Presentation Theme
+ * Based on modern startup pitch deck aesthetics
+ * For use with Reveal.js 4.5+
+ */
+
+/* ===== CSS VARIABLES ===== */
 :root {
-  --bg-dark: #0a0a0a;
-  --bg-card: #111111;
-  --bg-card-hover: #1a1a1a;
-  --accent: #7b8fa8;
-  --accent-light: #9bb0c9;
-  --accent-glow: rgba(123, 143, 168, 0.15);
-  --success: #7b9a7b;
-  --warning: #c9a85b;
-  --cyan: #6ba8a8;
-  --pink: #a87b8f;
-  --orange: #a8907b;
-  --blue: #7b8fa8;
-  --text-primary: #f5f4f0;
-  --text-secondary: #a8a8a8;
-  --text-muted: #666666;
-  --border: #2a2a2a;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 24px;
-  --spacing-lg: 40px;
-  --spacing-xl: 60px;
+  /* Primary Colors */
+  --pres-bg-primary: #0a0a12;
+  --pres-bg-secondary: #111119;
+  --pres-bg-card: #16161f;
+  --pres-bg-card-hover: #1c1c28;
+
+  /* Accent Colors */
+  --pres-purple: #8B5CF6;
+  --pres-purple-light: #A78BFA;
+  --pres-purple-dark: #7C3AED;
+  --pres-violet: #6D28D9;
+  --pres-pink: #EC4899;
+  --pres-cyan: #22D3EE;
+  --pres-green: #22c55e;
+  --pres-orange: #f97316;
+  --pres-blue: #3b82f6;
+
+  /* Text Colors */
+  --pres-text-primary: #FFFFFF;
+  --pres-text-secondary: rgba(255, 255, 255, 0.7);
+  --pres-text-muted: rgba(255, 255, 255, 0.5);
+
+  /* Gradients */
+  --pres-gradient-purple: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  --pres-gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16161f 100%);
+  --pres-gradient-glow: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  --pres-gradient-hero: linear-gradient(135deg, #1a1a2e 0%, #0a0a12 50%, #16061f 100%);
+
+  /* Shadows & Effects */
+  --pres-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --pres-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --pres-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --pres-shadow-glow: 0 0 40px rgba(139, 92, 246, 0.3);
+  --pres-shadow-glow-sm: 0 0 20px rgba(139, 92, 246, 0.2);
+
+  /* Border */
+  --pres-border-color: rgba(255, 255, 255, 0.08);
+  --pres-border-radius: 12px;
+  --pres-border-radius-lg: 20px;
+
+  /* Spacing */
+  --pres-spacing-xs: 8px;
+  --pres-spacing-sm: 16px;
+  --pres-spacing-md: 24px;
+  --pres-spacing-lg: 40px;
+  --pres-spacing-xl: 60px;
+
+  /* Typography */
+  --pres-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --pres-font-size-xs: 0.75rem;
+  --pres-font-size-sm: 0.875rem;
+  --pres-font-size-base: 1rem;
+  --pres-font-size-lg: 1.25rem;
+  --pres-font-size-xl: 1.5rem;
+  --pres-font-size-2xl: 2rem;
+  --pres-font-size-3xl: 2.5rem;
+  --pres-font-size-4xl: 3.5rem;
+  --pres-font-size-5xl: 4.5rem;
 }
 
-html, body {
-  background: var(--bg-dark) !important;
-  color: var(--text-primary);
+/* ===== BASE STYLES ===== */
+body {
+  font-family: var(--pres-font-family);
+  background: var(--pres-bg-primary);
+  color: var(--pres-text-primary);
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reveal {
+  font-family: var(--pres-font-family);
+  font-size: 24px;
+  color: var(--pres-text-primary);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  padding: 0;
+}
+
+/* ===== SLIDE BASE ===== */
+.slide {
+  height: 100%;
+  width: 100%;
+  padding: var(--pres-spacing-lg);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--pres-bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow effect */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80%;
+  height: 150%;
+  background: var(--pres-gradient-glow);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== SLIDE VARIANTS ===== */
+.slide--center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slide--gradient {
+  background: var(--pres-gradient-hero);
+}
+
+.slide--gradient::before {
+  background: radial-gradient(ellipse at 30% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 60%);
+}
+
+/* ===== HEADER BAR ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--pres-spacing-sm);
+  margin-bottom: var(--pres-spacing-md);
+  flex-shrink: 0;
+}
+
+.header__logo {
+  font-weight: 600;
+  font-size: var(--pres-font-size-sm);
+  color: var(--pres-text-secondary);
+}
+
+.header__nav {
+  display: flex;
+  gap: var(--pres-spacing-md);
+  align-items: center;
+}
+
+.header__cta {
+  background: transparent;
+  border: 1px solid var(--pres-border-color);
+  color: var(--pres-text-primary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: var(--pres-font-size-sm);
+  cursor: pointer;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.kicker {
+  font-size: var(--pres-font-size-sm);
+  color: var(--pres-purple-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--pres-spacing-sm);
+  font-weight: 500;
+}
+
+h1, .h1 {
+  font-size: var(--pres-font-size-5xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 var(--pres-spacing-md) 0;
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-size: var(--pres-font-size-3xl);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 var(--pres-spacing-md) 0;
+  letter-spacing: -0.02em;
+}
+
+h3, .h3 {
+  font-size: var(--pres-font-size-2xl);
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 var(--pres-spacing-sm) 0;
+}
+
+h4, .h4 {
+  font-size: var(--pres-font-size-lg);
+  font-weight: 600;
+  margin: 0 0 var(--pres-spacing-xs) 0;
+}
+
+.lead {
+  font-size: var(--pres-font-size-lg);
+  color: var(--pres-text-secondary);
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.muted {
+  color: var(--pres-text-muted);
+}
+
+.highlight {
+  color: var(--pres-purple);
+}
+
+.gradient-text {
+  background: var(--pres-gradient-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== LAYOUT UTILITIES ===== */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--pres-spacing-lg);
+  align-items: center;
+  flex: 1;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--pres-spacing-md);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--pres-spacing-md);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--pres-spacing-sm);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--pres-bg-card);
+  border: 1px solid var(--pres-border-color);
+  border-radius: var(--pres-border-radius);
+  padding: var(--pres-spacing-md);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background: var(--pres-bg-card-hover);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.card--glow {
+  box-shadow: var(--pres-shadow-glow-sm);
+  border-color: var(--pres-purple);
+}
+
+.card__icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--pres-spacing-sm);
+  color: var(--pres-purple);
+}
+
+.card__icon svg {
+  width: 100%;
   height: 100%;
 }
 
-body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-
-.reveal-viewport {
-  background: var(--bg-dark) !important;
-  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px) !important;
-  background-size: 60px 60px !important;
+.card__title {
+  font-size: var(--pres-font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--pres-spacing-xs);
 }
 
-.reveal { background: var(--bg-dark); font-family: var(--font-sans); font-size: 22px; color: var(--text-primary); }
-.reveal .slides { text-align: left; }
-.reveal .slides section { padding: 0; background: var(--bg-dark); }
-
-.slide {
-  height: 100%; width: 100%; padding: var(--spacing-lg); box-sizing: border-box;
-  display: flex; flex-direction: column; background: transparent; position: relative; overflow: hidden;
+.card__text {
+  font-size: var(--pres-font-size-sm);
+  color: var(--pres-text-secondary);
+  line-height: 1.5;
 }
-.slide::before {
-  content: ''; position: absolute; top: -50%; right: -30%; width: 80%; height: 150%;
-  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
+
+/* Model cards specific */
+.model-card {
+  background: var(--pres-bg-card);
+  border: 1px solid var(--pres-border-color);
+  border-radius: var(--pres-border-radius);
+  padding: var(--pres-spacing-sm);
 }
-.slide > * { position: relative; z-index: 1; }
-.slide--center { align-items: center; justify-content: center; text-align: center; }
-.slide--section::before { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; right: auto; }
 
-.header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding-bottom: var(--spacing-md); margin-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--border); flex-shrink: 0;
+.model-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--pres-spacing-xs);
 }
-.header__logo { font-family: var(--font-serif); font-size: 0.9rem; font-weight: 400; color: var(--text-secondary); }
-.header__nav { display: flex; gap: var(--spacing-md); align-items: center; }
 
-.kicker {
-  font-size: 0.7rem; color: var(--accent); text-transform: uppercase;
-  letter-spacing: 0.25em; margin-bottom: var(--spacing-sm); font-weight: 500;
-  display: flex; align-items: center; gap: 12px;
+.model-card__name {
+  font-weight: 600;
+  font-size: var(--pres-font-size-base);
 }
-.kicker::after { content: ''; width: 40px; height: 1px; background: var(--accent); opacity: 0.5; }
 
-h1, .h1 { font-family: var(--font-serif); font-size: 4rem; font-weight: 400; font-style: italic; line-height: 1.1; margin: 0 0 var(--spacing-md) 0; }
-h2, .h2 { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 400; line-height: 1.15; margin: 0 0 var(--spacing-md) 0; }
-h3, .h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.3; margin: 0 0 var(--spacing-sm) 0; }
-h4, .h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; margin: 0 0 var(--spacing-xs) 0; }
-.lead { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; max-width: 700px; }
-.muted { color: var(--text-muted); }
-.highlight, .accent-text { color: var(--accent); }
-.content { flex: 1; display: flex; flex-direction: column; }
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); align-items: center; flex: 1; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); }
-.flex-center { display: flex; align-items: center; justify-content: center; }
+.model-card__provider {
+  font-size: var(--pres-font-size-xs);
+  color: var(--pres-text-muted);
+}
 
-.card { background: transparent; border: 1px solid var(--border); padding: var(--spacing-md); transition: all 0.3s ease; }
-.card:hover { background: var(--bg-card); border-color: var(--accent); }
-.card--glow { border-color: var(--accent); background: var(--bg-card); }
-.card__title { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; margin-bottom: var(--spacing-xs); }
-.card__text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+.model-card__specs {
+  font-size: var(--pres-font-size-xs);
+  color: var(--pres-text-secondary);
+  margin-top: var(--pres-spacing-xs);
+}
 
-.model-card { background: transparent; border: 1px solid var(--border); padding: var(--spacing-sm); transition: all 0.3s ease; }
-.model-card:hover { border-color: var(--accent); background: var(--bg-card); }
-.model-card__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs); }
-.model-card__name { font-weight: 500; font-size: 0.95rem; }
-.model-card__provider { font-size: 0.7rem; color: var(--text-muted); }
-.model-card__specs { font-size: 0.75rem; color: var(--text-secondary); margin-top: var(--spacing-xs); }
-.model-card__strength { font-size: 0.85rem; color: var(--accent); margin-top: var(--spacing-xs); }
+.model-card__strength {
+  font-size: var(--pres-font-size-sm);
+  color: var(--pres-cyan);
+  margin-top: var(--pres-spacing-xs);
+}
 
-.badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-.badge--green { color: var(--success); border-color: var(--success); }
-.badge--orange { color: var(--orange); border-color: var(--orange); }
-.badge--blue { color: var(--blue); border-color: var(--blue); }
-.badge--cyan { color: var(--cyan); border-color: var(--cyan); }
-.badge--pink { color: var(--pink); border-color: var(--pink); }
+/* ===== BADGES ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: var(--pres-font-size-xs);
+  font-weight: 500;
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--pres-purple-light);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
 
-.list { list-style: none; padding: 0; margin: 0; }
-.list li { padding: var(--spacing-sm) 0; padding-left: var(--spacing-lg); position: relative; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-.list li:last-child { border-bottom: none; }
-.list li::before { content: '—'; position: absolute; left: 0; top: var(--spacing-sm); color: var(--accent); }
-.list--check li::before { content: '✓'; color: var(--success); }
+.badge--green {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.3);
+}
 
-.metric { text-align: center; padding: var(--spacing-md); }
-.metric__value { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 400; font-style: italic; color: var(--accent); line-height: 1; margin-bottom: var(--spacing-xs); }
-.metric__label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.badge--orange {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+  border-color: rgba(249, 115, 22, 0.3);
+}
 
-.feature-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-.feature-table th, .feature-table td { padding: var(--spacing-xs) var(--spacing-sm); text-align: left; border-bottom: 1px solid var(--border); }
-.feature-table th { color: var(--text-muted); font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.feature-table td { color: var(--text-secondary); }
-.feature-table tr:hover td { background: var(--bg-card); }
+.badge--blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; cursor: pointer; transition: all 0.3s ease; border: 1px solid var(--text-primary); background: transparent; color: var(--text-primary); pointer-events: auto !important; position: relative; z-index: 100; }
-.btn:hover { background: var(--text-primary); color: var(--bg-dark); }
-.btn--accent { border-color: var(--accent); color: var(--accent); }
-.btn--accent:hover { background: var(--accent); color: var(--bg-dark); }
-a.btn { display: inline-flex !important; pointer-events: auto !important; z-index: 9999 !important; position: relative !important; cursor: pointer !important; }
+.badge--cyan {
+  background: rgba(34, 211, 238, 0.15);
+  color: #22d3ee;
+  border-color: rgba(34, 211, 238, 0.3);
+}
 
-.effect-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--spacing-xs); }
-.effect-tag { background: transparent; border: 1px solid var(--border); padding: 6px 10px; font-size: 0.7rem; text-align: center; color: var(--text-secondary); transition: all 0.3s ease; }
-.effect-tag:hover { border-color: var(--accent); color: var(--text-primary); }
+.badge--pink {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+  border-color: rgba(236, 72, 153, 0.3);
+}
 
-.reveal .controls { color: var(--accent); }
-.reveal .progress { background: var(--border); height: 2px; }
-.reveal .progress span { background: var(--accent); }
-.reveal .slide-number { background: transparent; color: var(--text-muted); font-size: 12px; font-family: var(--font-mono); right: 20px; bottom: 20px; }
-.reveal .slides section .fragment { opacity: 0; transition: all 0.4s ease; }
-.reveal .slides section .fragment.visible { opacity: 1; }
-.reveal .slides section .fragment.fade-up { transform: translateY(20px); }
-.reveal .slides section .fragment.fade-up.visible { transform: translateY(0); }
+/* ===== LISTS ===== */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-.mt-sm { margin-top: var(--spacing-sm); }
-.mt-md { margin-top: var(--spacing-md); }
-.mt-lg { margin-top: var(--spacing-lg); }
-.mb-sm { margin-bottom: var(--spacing-sm); }
-.mb-md { margin-bottom: var(--spacing-md); }
+.list li {
+  padding: var(--pres-spacing-xs) 0;
+  padding-left: var(--pres-spacing-md);
+  position: relative;
+  font-size: var(--pres-font-size-sm);
+}
+
+.list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--pres-purple);
+  border-radius: 50%;
+}
+
+.list--check li::before {
+  content: '✓';
+  width: auto;
+  height: auto;
+  background: none;
+  color: var(--pres-green);
+  font-weight: bold;
+  font-size: var(--pres-font-size-sm);
+}
+
+/* ===== METRICS ===== */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--pres-spacing-md);
+}
+
+.metric {
+  text-align: center;
+  padding: var(--pres-spacing-md);
+}
+
+.metric__value {
+  font-size: var(--pres-font-size-3xl);
+  font-weight: 700;
+  color: var(--pres-purple);
+  line-height: 1;
+  margin-bottom: var(--pres-spacing-xs);
+}
+
+.metric__label {
+  font-size: var(--pres-font-size-sm);
+  color: var(--pres-text-muted);
+}
+
+.metric--card {
+  background: var(--pres-bg-card);
+  border: 1px solid var(--pres-border-color);
+  border-radius: var(--pres-border-radius);
+}
+
+/* ===== FEATURE TABLE ===== */
+.feature-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--pres-font-size-sm);
+}
+
+.feature-table th,
+.feature-table td {
+  padding: var(--pres-spacing-xs) var(--pres-spacing-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--pres-border-color);
+}
+
+.feature-table th {
+  color: var(--pres-text-muted);
+  font-weight: 500;
+  font-size: var(--pres-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feature-table td {
+  color: var(--pres-text-secondary);
+}
+
+.feature-table tr:hover td {
+  background: var(--pres-bg-card);
+}
+
+/* ===== REVEAL.JS OVERRIDES ===== */
+.reveal .controls {
+  color: var(--pres-purple);
+}
+
+.reveal .progress {
+  background: var(--pres-border-color);
+  height: 3px;
+}
+
+.reveal .progress span {
+  background: var(--pres-purple);
+}
+
+.reveal .slide-number {
+  background: transparent;
+  color: var(--pres-text-muted);
+  font-size: 14px;
+  right: 20px;
+  bottom: 20px;
+}
+
+/* ===== FRAGMENT ANIMATIONS ===== */
+.reveal .slides section .fragment {
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+}
+
+.reveal .slides section .fragment.fade-up {
+  transform: translateY(20px);
+}
+
+.reveal .slides section .fragment.fade-up.visible {
+  transform: translateY(0);
+}
+
+/* Custom utilities */
+.mt-sm { margin-top: var(--pres-spacing-sm); }
+.mt-md { margin-top: var(--pres-spacing-md); }
+.mt-lg { margin-top: var(--pres-spacing-lg); }
+.mb-sm { margin-bottom: var(--pres-spacing-sm); }
+.mb-md { margin-bottom: var(--pres-spacing-md); }
 .text-center { text-align: center; }
-.text-sm { font-size: 0.85rem; }
-.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: var(--pres-font-size-sm); }
+.text-xs { font-size: var(--pres-font-size-xs); }
+
+/* Effect cards */
+.effect-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--pres-spacing-xs);
+}
+
+.effect-tag {
+  background: var(--pres-bg-card);
+  border: 1px solid var(--pres-border-color);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: var(--pres-font-size-xs);
+  text-align: center;
+  color: var(--pres-text-secondary);
+}
+
+.effect-tag:hover {
+  border-color: var(--pres-purple);
+  color: var(--pres-text-primary);
+}
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-<!-- SLIDE 1: TITLE -->
+<!-- ========== SLIDE 1: TITLE ========== -->
 <section>
-  <div class="slide slide--section slide--center">
+  <div class="slide slide--gradient slide--center">
     <div class="content flex-center" style="flex-direction: column; text-align: center;">
-      <p class="kicker" style="justify-content: center;">Complete Platform Guide</p>
-      <h1>Higgsfield AI<br><span class="accent-text">Platform Overview</span></h1>
-      <p class="lead" style="max-width: 700px; margin: 0 auto;">7 Video Model Families + 14 Image Models + Cinema Studio + 250+ Effects</p>
+      <p class="kicker">Complete Platform Guide</p>
+      <h1>Higgsfield AI<br><span class="gradient-text">Platform Overview</span></h1>
+      <p class="lead" style="max-width: 700px; margin: 0 auto;">
+        7 Video Model Families + 14 Image Models + Cinema Studio + 250+ Effects
+      </p>
       <div style="margin-top: 32px; display: flex; gap: 16px;">
         <span class="badge badge--green">$50M Series A</span>
         <span class="badge badge--blue">11M+ Users</span>
         <span class="badge">Founded 2023</span>
       </div>
-<!-- SLIDE 2: THE BIG PICTURE -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 2: THE BIG PICTURE ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge">Multi-Model Hub</span></div>
+      <div class="header__nav">
+        <span class="badge">Multi-Model Hub</span>
+      </div>
     </div>
     <div class="content">
       <p class="kicker">The Big Picture</p>
       <h2>Not Just Another AI Tool</h2>
       <p class="lead mb-md">Higgsfield is a <strong>creative operating system</strong> that aggregates the best AI models + professional production tools.</p>
+
       <div class="grid-4 mt-md">
         <div class="card fragment fade-up">
           <div class="metric__value" style="font-size: 2.5rem;">7</div>
@@ -221,27 +640,32 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
   </div>
 </section>
 
-<!-- SLIDE 3: VIDEO MODELS OVERVIEW -->
+<!-- ========== SLIDE 3: VIDEO MODELS OVERVIEW ========== -->
 <section>
-  <div class="slide slide--section slide--center">
-    <div class="header"><div class="header__logo">Higgsfield AI</div></div>
+  <div class="slide slide--gradient">
+    <div class="header">
+      <div class="header__logo">Higgsfield AI</div>
+    </div>
     <div class="content flex-center" style="flex-direction: column;">
-      <p class="kicker" style="justify-content: center;">Video Generation</p>
+      <p class="kicker">Video Generation</p>
       <h2>7 Video Model Families</h2>
       <p class="lead muted">All the best video AI models in one interface</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 4: VIDEO MODELS GRID -->
+<!-- ========== SLIDE 4: VIDEO MODELS GRID ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--cyan">Video Models</span></div>
+      <div class="header__nav">
+        <span class="badge badge--cyan">Video Models</span>
+      </div>
     </div>
     <div class="content">
       <h2 style="font-size: 1.8rem;">Video Model Comparison</h2>
+
       <div class="grid-2 mt-md" style="gap: 12px;">
         <div class="model-card fragment fade-up">
           <div class="model-card__header">
@@ -251,6 +675,7 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <div class="model-card__strength">Camera controls + VFX presets</div>
           <div class="model-card__specs">720p | 3-5s | Lite/Standard/Turbo tiers</div>
         </div>
+
         <div class="model-card fragment fade-up">
           <div class="model-card__header">
             <span class="model-card__name">OpenAI Sora 2</span>
@@ -259,7 +684,8 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <div class="model-card__strength">Multi-shot video + sound generation</div>
           <div class="model-card__specs">Premium tier only</div>
         </div>
-<div class="model-card fragment fade-up">
+
+        <div class="model-card fragment fade-up">
           <div class="model-card__header">
             <span class="model-card__name">Google Veo 3.1</span>
             <span class="badge badge--blue">Premium</span>
@@ -267,6 +693,7 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <div class="model-card__strength">Precision video + sound control</div>
           <div class="model-card__specs">Premium tier only</div>
         </div>
+
         <div class="model-card fragment fade-up">
           <div class="model-card__header">
             <span class="model-card__name">WAN 2.5/2.6</span>
@@ -275,7 +702,8 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <div class="model-card__strength">Camera control + sound, more freedom</div>
           <div class="model-card__specs">Multiple versions | Uncensored option</div>
         </div>
-<div class="model-card fragment fade-up">
+
+        <div class="model-card fragment fade-up">
           <div class="model-card__header">
             <span class="model-card__name">Kling 2.5/2.6</span>
             <span class="badge badge--pink">Kuaishou</span>
@@ -283,6 +711,7 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <div class="model-card__strength">Perfect motion + advanced control</div>
           <div class="model-card__specs">1080p | Turbo available | Audio sync</div>
         </div>
+
         <div class="model-card fragment fade-up">
           <div class="model-card__header">
             <span class="model-card__name">Minimax Hailuo</span>
@@ -291,7 +720,8 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <div class="model-card__strength">High-dynamic, VFX-ready, fastest</div>
           <div class="model-card__specs">Most affordable option</div>
         </div>
-<div class="model-card fragment fade-up" style="grid-column: span 2;">
+
+        <div class="model-card fragment fade-up" style="grid-column: span 2;">
           <div class="model-card__header">
             <span class="model-card__name">Seedance 1.5</span>
             <span class="badge">ByteDance</span>
@@ -304,76 +734,158 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
   </div>
 </section>
 
-<!-- SLIDE 5: WHEN TO USE WHICH MODEL -->
+<!-- ========== SLIDE 5: WHEN TO USE WHICH MODEL ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--cyan">Video Models</span></div>
+      <div class="header__nav">
+        <span class="badge badge--cyan">Video Models</span>
+      </div>
     </div>
     <div class="content">
       <h2 style="font-size: 1.8rem;">When to Use Which Model</h2>
+
       <table class="feature-table mt-md">
-        <thead><tr><th>Use Case</th><th>Best Model</th><th>Why</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Use Case</th>
+            <th>Best Model</th>
+            <th>Why</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr class="fragment"><td><strong>Quick social clips</strong></td><td style="color: var(--cyan);">Minimax Hailuo</td><td>Fastest + cheapest</td></tr>
-          <tr class="fragment"><td><strong>Camera movement control</strong></td><td style="color: var(--accent);">Higgsfield DoP</td><td>70+ camera presets</td></tr>
-          <tr class="fragment"><td><strong>Perfect motion/lip sync</strong></td><td style="color: var(--pink);">Kling 2.6 Audio</td><td>Native audio sync at 1080p</td></tr>
-          <tr class="fragment"><td><strong>Creative freedom</strong></td><td style="color: var(--orange);">WAN 2.5</td><td>Fewer restrictions, 10s videos</td></tr>
-          <tr class="fragment"><td><strong>Premium quality</strong></td><td style="color: var(--success);">Sora 2 / Veo 3.1</td><td>Industry-leading output</td></tr>
-          <tr class="fragment"><td><strong>Cinematic multi-shot</strong></td><td style="color: var(--text-primary);">Seedance 1.5</td><td>ByteDance film-style</td></tr>
+          <tr class="fragment">
+            <td><strong>Quick social clips</strong></td>
+            <td style="color: var(--pres-cyan);">Minimax Hailuo</td>
+            <td>Fastest + cheapest</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Camera movement control</strong></td>
+            <td style="color: var(--pres-purple);">Higgsfield DoP</td>
+            <td>70+ camera presets</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Perfect motion/lip sync</strong></td>
+            <td style="color: var(--pres-pink);">Kling 2.6 Audio</td>
+            <td>Native audio sync at 1080p</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Creative freedom</strong></td>
+            <td style="color: var(--pres-orange);">WAN 2.5</td>
+            <td>Fewer restrictions, 10s videos</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Premium quality</strong></td>
+            <td style="color: var(--pres-green);">Sora 2 / Veo 3.1</td>
+            <td>Industry-leading output</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Cinematic multi-shot</strong></td>
+            <td style="color: var(--pres-text-primary);">Seedance 1.5</td>
+            <td>ByteDance film-style</td>
+          </tr>
         </tbody>
       </table>
-      <div style="margin-top: 24px; text-align: center;">
-        <button onclick="window.open('https://higgsfield.ai/?utm_source=GodaGo', '_blank')" class="btn btn--accent" style="pointer-events: auto !important; cursor: pointer;">Try These Models</button>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 6: IMAGE MODELS OVERVIEW -->
+<!-- ========== SLIDE 6: IMAGE MODELS OVERVIEW ========== -->
 <section>
-  <div class="slide slide--section slide--center">
-    <div class="header"><div class="header__logo">Higgsfield AI</div></div>
+  <div class="slide slide--gradient">
+    <div class="header">
+      <div class="header__logo">Higgsfield AI</div>
+    </div>
     <div class="content flex-center" style="flex-direction: column;">
-      <p class="kicker" style="justify-content: center;">Image Generation</p>
+      <p class="kicker">Image Generation</p>
       <h2>14 Image Models</h2>
       <p class="lead muted">From fashion visuals to photorealistic portraits</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 7: IMAGE MODELS GRID -->
+<!-- ========== SLIDE 7: IMAGE MODELS GRID ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--pink">Image Models</span></div>
+      <div class="header__nav">
+        <span class="badge badge--pink">Image Models</span>
+      </div>
     </div>
     <div class="content">
       <h2 style="font-size: 1.6rem;">Image Model Library</h2>
+
       <div class="grid-3 mt-sm" style="gap: 10px;">
-        <div class="model-card fragment"><div class="model-card__name" style="color: var(--accent);">Nano Banana Pro</div><div class="model-card__strength">Google's Flagship - 2K/4K</div><div class="model-card__specs">Text renders correctly | Unlimited</div></div>
-        <div class="model-card fragment"><div class="model-card__name" style="color: var(--pink);">Higgsfield Soul</div><div class="model-card__strength">Ultra-Realistic Fashion</div><div class="model-card__specs">Unlimited</div></div>
-        <div class="model-card fragment"><div class="model-card__name" style="color: var(--cyan);">Higgsfield Face Swap</div><div class="model-card__strength">Seamless Face Swapping</div><div class="model-card__specs">Unlimited</div></div>
-        <div class="model-card fragment"><div class="model-card__name" style="color: var(--orange);">Seedream 4.5</div><div class="model-card__strength">ByteDance Next-Gen 4K</div><div class="model-card__specs">Unlimited</div></div>
-        <div class="model-card fragment"><div class="model-card__name" style="color: var(--success);">GPT Image 1.5</div><div class="model-card__strength">True-Color Precision</div><div class="model-card__specs">Available</div></div>
-        <div class="model-card fragment"><div class="model-card__name" style="color: var(--blue);">Z-Image</div><div class="model-card__strength">Instant Lifelike Portraits</div><div class="model-card__specs">Unlimited</div></div>
-        <div class="model-card fragment"><div class="model-card__name">FLUX.2 Pro</div><div class="model-card__strength">Speed-Optimized Detail</div><div class="model-card__specs">Unlimited</div></div>
-        <div class="model-card fragment"><div class="model-card__name">FLUX.2 Max</div><div class="model-card__strength">Ultimate Precision</div><div class="model-card__specs">Available</div></div>
-        <div class="model-card fragment"><div class="model-card__name">Reve</div><div class="model-card__strength">Advanced Image Editing</div><div class="model-card__specs">Unlimited</div></div>
+        <div class="model-card fragment">
+          <div class="model-card__name" style="color: var(--pres-purple);">Nano Banana Pro</div>
+          <div class="model-card__strength">Google's Flagship - 2K/4K</div>
+          <div class="model-card__specs">Text renders correctly | Unlimited</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name" style="color: var(--pres-pink);">Higgsfield Soul</div>
+          <div class="model-card__strength">Ultra-Realistic Fashion</div>
+          <div class="model-card__specs">Unlimited</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name" style="color: var(--pres-cyan);">Higgsfield Face Swap</div>
+          <div class="model-card__strength">Seamless Face Swapping</div>
+          <div class="model-card__specs">Unlimited</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name" style="color: var(--pres-orange);">Seedream 4.5</div>
+          <div class="model-card__strength">ByteDance Next-Gen 4K</div>
+          <div class="model-card__specs">Unlimited</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name" style="color: var(--pres-green);">GPT Image 1.5</div>
+          <div class="model-card__strength">True-Color Precision</div>
+          <div class="model-card__specs">Available</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name" style="color: var(--pres-blue);">Z-Image</div>
+          <div class="model-card__strength">Instant Lifelike Portraits</div>
+          <div class="model-card__specs">Unlimited</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name">FLUX.2 Pro</div>
+          <div class="model-card__strength">Speed-Optimized Detail</div>
+          <div class="model-card__specs">Unlimited</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name">FLUX.2 Max</div>
+          <div class="model-card__strength">Ultimate Precision</div>
+          <div class="model-card__specs">Available</div>
+        </div>
+
+        <div class="model-card fragment">
+          <div class="model-card__name">Reve</div>
+          <div class="model-card__strength">Advanced Image Editing</div>
+          <div class="model-card__specs">Unlimited</div>
+        </div>
       </div>
+
       <p class="text-xs muted mt-sm">+ Kling O1, Nano Banana Standard, FLUX.2 Flex, Seedream 4.0, Character Swap</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 8: CINEMA STUDIO INTRO -->
+<!-- ========== SLIDE 8: KEY FEATURE - CINEMA STUDIO ========== -->
 <section>
-  <div class="slide slide--section slide--center">
-    <div class="header"><div class="header__logo">Higgsfield AI</div></div>
+  <div class="slide slide--gradient">
+    <div class="header">
+      <div class="header__logo">Higgsfield AI</div>
+    </div>
     <div class="content flex-center" style="flex-direction: column;">
-      <p class="kicker" style="justify-content: center;">Key Feature #1</p>
+      <p class="kicker">Key Feature #1</p>
       <h2>Cinema Studio v1.5</h2>
       <p class="lead muted">Professional-grade cinematic content with real camera simulation</p>
       <span class="badge badge--green mt-md">Unique Differentiator</span>
@@ -381,18 +893,21 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
   </div>
 </section>
 
-<!-- SLIDE 9: CINEMA STUDIO DETAILS -->
+<!-- ========== SLIDE 9: CINEMA STUDIO DETAILS ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--green">Cinema Studio</span></div>
+      <div class="header__nav">
+        <span class="badge badge--green">Cinema Studio</span>
+      </div>
     </div>
     <div class="split">
       <div>
         <p class="kicker">Virtual Camera Simulation</p>
         <h2 style="font-size: 2rem;">Real Camera Bodies<br>+ Real Lenses</h2>
         <p class="lead">No other AI video platform offers this level of camera control.</p>
+
         <ul class="list list--check mt-md">
           <li class="fragment"><strong>Arri Alexa 35</strong> and more camera bodies</li>
           <li class="fragment"><strong>ARRI Signature Prime</strong> spherical lenses</li>
@@ -404,13 +919,34 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
         <div class="card card--glow">
           <h4>Cinema Studio Settings</h4>
           <table class="feature-table mt-sm">
-<tr><td>Camera</td><td>Arri Alexa 35 (Digital)</td></tr>
-            <tr><td>Lens</td><td>ARRI Signature Prime</td></tr>
-            <tr><td>Focal</td><td>14mm - 50mm+ (14 options)</td></tr>
-            <tr><td>Aperture</td><td>f/4 adjustable</td></tr>
-            <tr><td>Aspect</td><td>16:9, 21:9 CinemaScope</td></tr>
-            <tr><td>Resolution</td><td>2K (4K via upscaling)</td></tr>
-            <tr><td>Presets</td><td>70+ camera presets</td></tr>
+            <tr>
+              <td>Camera</td>
+              <td>Arri Alexa 35 (Digital)</td>
+            </tr>
+            <tr>
+              <td>Lens</td>
+              <td>ARRI Signature Prime</td>
+            </tr>
+            <tr>
+              <td>Focal</td>
+              <td>14mm - 50mm+ (14 options)</td>
+            </tr>
+            <tr>
+              <td>Aperture</td>
+              <td>f/4 adjustable</td>
+            </tr>
+            <tr>
+              <td>Aspect</td>
+              <td>16:9, 21:9 CinemaScope</td>
+            </tr>
+            <tr>
+              <td>Resolution</td>
+              <td>2K (4K via upscaling)</td>
+            </tr>
+            <tr>
+              <td>Presets</td>
+              <td>70+ camera presets</td>
+            </tr>
           </table>
         </div>
       </div>
@@ -418,18 +954,21 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
   </div>
 </section>
 
-<!-- SLIDE 10: MOTION CONTROL -->
+<!-- ========== SLIDE 10: KEY FEATURE - MOTION CONTROL ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--orange">Motion Control</span></div>
+      <div class="header__nav">
+        <span class="badge badge--orange">Motion Control</span>
+      </div>
     </div>
     <div class="split">
       <div>
         <p class="kicker">Key Feature #2</p>
         <h2 style="font-size: 2rem;">Motion Control</h2>
         <p class="lead">Recreate any motion with your image</p>
+
         <ul class="list mt-md">
           <li class="fragment"><strong>Input:</strong> Any video (3-30 seconds) + character image</li>
           <li class="fragment"><strong>Process:</strong> Extracts motion, applies to your character</li>
@@ -443,7 +982,7 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
           <h4 class="mb-sm">Example: Character Transformation</h4>
           <p class="text-sm muted">Transform yourself into different person with a snap</p>
           <div class="mt-md">
-            <p class="text-xs" style="color: var(--cyan);"><strong>How to do it:</strong></p>
+            <p class="text-xs" style="color: var(--pres-cyan);"><strong>How to do it:</strong></p>
             <ol class="list" style="padding-left: 20px;">
               <li>Record a motion reference video</li>
               <li>Use Motion Control to transfer motion</li>
@@ -457,208 +996,410 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
   </div>
 </section>
 
-<!-- SLIDE 11: EFFECTS LIBRARY -->
+<!-- ========== SLIDE 11: KEY FEATURE - EFFECTS LIBRARY ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--pink">Effects Library</span></div>
+      <div class="header__nav">
+        <span class="badge badge--pink">Effects Library</span>
+      </div>
     </div>
     <div class="content">
       <p class="kicker">Key Feature #3</p>
       <h2 style="font-size: 2rem;">250+ VFX Presets</h2>
       <p class="lead mb-md">One-click effects for viral content</p>
+
       <div class="grid-2" style="gap: 16px;">
         <div class="card fragment">
-          <h4 style="color: var(--orange);">Elemental</h4>
+          <h4 style="color: var(--pres-orange);">Elemental</h4>
           <div class="effect-grid mt-sm">
-            <span class="effect-tag">Air Bending</span><span class="effect-tag">Water Bending</span><span class="effect-tag">Fire Element</span><span class="effect-tag">Firelava</span><span class="effect-tag">Earth Element</span>
+            <span class="effect-tag">Air Bending</span>
+            <span class="effect-tag">Water Bending</span>
+            <span class="effect-tag">Fire Element</span>
+            <span class="effect-tag">Firelava</span>
+            <span class="effect-tag">Earth Element</span>
           </div>
         </div>
+
         <div class="card fragment">
-          <h4 style="color: var(--cyan);">Transitions</h4>
+          <h4 style="color: var(--pres-cyan);">Transitions</h4>
           <div class="effect-grid mt-sm">
-            <span class="effect-tag">Raven</span><span class="effect-tag">Melt</span><span class="effect-tag">Flame</span><span class="effect-tag">Hand</span><span class="effect-tag">Snap</span>
+            <span class="effect-tag">Raven</span>
+            <span class="effect-tag">Melt</span>
+            <span class="effect-tag">Flame</span>
+            <span class="effect-tag">Hand</span>
+            <span class="effect-tag">Snap</span>
           </div>
         </div>
+
         <div class="card fragment">
-          <h4 style="color: var(--accent);">Transformations</h4>
+          <h4 style="color: var(--pres-purple);">Transformations</h4>
           <div class="effect-grid mt-sm">
-            <span class="effect-tag">Animalization</span><span class="effect-tag">Cyborg</span><span class="effect-tag">Morph</span><span class="effect-tag">Mystification</span><span class="effect-tag">Clone</span>
+            <span class="effect-tag">Animalization</span>
+            <span class="effect-tag">Cyborg</span>
+            <span class="effect-tag">Morph</span>
+            <span class="effect-tag">Mystification</span>
+            <span class="effect-tag">Clone</span>
           </div>
         </div>
+
         <div class="card fragment">
-          <h4 style="color: var(--success);">Atmospheric</h4>
+          <h4 style="color: var(--pres-green);">Atmospheric</h4>
           <div class="effect-grid mt-sm">
-            <span class="effect-tag">Northern Lights</span><span class="effect-tag">Cotton Cloud</span><span class="effect-tag">Color Rain</span><span class="effect-tag">Sakura</span><span class="effect-tag">Firework</span>
+            <span class="effect-tag">Northern Lights</span>
+            <span class="effect-tag">Cotton Cloud</span>
+            <span class="effect-tag">Color Rain</span>
+            <span class="effect-tag">Sakura</span>
+            <span class="effect-tag">Firework</span>
           </div>
         </div>
       </div>
+
       <p class="text-xs muted mt-sm">Categories: All | New | Start & End | Effects | Viral | UGC | Camera Control</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 12: BEST EFFECTS -->
+<!-- ========== SLIDE 12: BEST EFFECTS FOR TRANSFORMATIONS ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--pink">Popular Effects</span></div>
+      <div class="header__nav">
+        <span class="badge badge--pink">Popular Effects</span>
+      </div>
     </div>
     <div class="content">
       <h2 style="font-size: 1.8rem;">Best Effects for Transformations</h2>
       <p class="lead mb-md">Environment changes, character swaps, and reveals</p>
+
       <div class="grid-3">
-        <div class="card card--glow fragment"><h4 style="color: var(--pink);">Hand Transition</h4><p class="text-sm muted">Perfect for finger snap reveal</p></div>
-        <div class="card fragment"><h4 style="color: var(--cyan);">Melt Transition</h4><p class="text-sm muted">Smooth morph between scenes</p></div>
-        <div class="card fragment"><h4 style="color: var(--orange);">Flame Transition</h4><p class="text-sm muted">Dramatic reveal effect</p></div>
-        <div class="card fragment"><h4 style="color: var(--accent);">Character Swap</h4><p class="text-sm muted">Change to different person</p></div>
-        <div class="card fragment"><h4 style="color: var(--success);">Mystification</h4><p class="text-sm muted">Magical transformation</p></div>
-        <div class="card fragment"><h4 style="color: var(--blue);">Wonderland</h4><p class="text-sm muted">Environment change</p></div>
-      </div>
-      <div style="margin-top: 24px; text-align: center;">
-        <button onclick="window.open('https://higgsfield.ai/?utm_source=GodaGo', '_blank')" class="btn btn--accent" style="pointer-events: auto !important; cursor: pointer;">Explore Effects</button>
+        <div class="card card--glow fragment">
+          <h4 style="color: var(--pres-pink);">Hand Transition</h4>
+          <p class="text-sm muted">Perfect for finger snap reveal</p>
+        </div>
+
+        <div class="card fragment">
+          <h4 style="color: var(--pres-cyan);">Melt Transition</h4>
+          <p class="text-sm muted">Smooth morph between scenes</p>
+        </div>
+
+        <div class="card fragment">
+          <h4 style="color: var(--pres-orange);">Flame Transition</h4>
+          <p class="text-sm muted">Dramatic reveal effect</p>
+        </div>
+
+        <div class="card fragment">
+          <h4 style="color: var(--pres-purple);">Character Swap</h4>
+          <p class="text-sm muted">Change to different person</p>
+        </div>
+
+        <div class="card fragment">
+          <h4 style="color: var(--pres-green);">Mystification</h4>
+          <p class="text-sm muted">Magical transformation</p>
+        </div>
+
+        <div class="card fragment">
+          <h4 style="color: var(--pres-blue);">Wonderland</h4>
+          <p class="text-sm muted">Environment change</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 13: 4 MUST-TRY INTRO -->
+<!-- ========== SLIDE 13: TOP FEATURES ========== -->
 <section>
-  <div class="slide slide--section slide--center">
-    <div class="header"><div class="header__logo">Higgsfield AI</div></div>
+  <div class="slide slide--gradient">
+    <div class="header">
+      <div class="header__logo">Higgsfield AI</div>
+    </div>
     <div class="content flex-center" style="flex-direction: column;">
-      <p class="kicker" style="justify-content: center;">Getting Started</p>
+      <p class="kicker">Getting Started</p>
       <h2>4 Must-Try Features</h2>
       <p class="lead muted">The standout capabilities that set Higgsfield apart</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 14: 4 MUST-TRY DETAIL -->
+<!-- ========== SLIDE 14: TOP FEATURES DETAIL ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge badge--green">Standout Features</span></div>
+      <div class="header__nav">
+        <span class="badge badge--green">Standout Features</span>
+      </div>
     </div>
     <div class="content" style="justify-content: center;">
       <div class="grid-2" style="gap: 12px;">
         <div class="card card--glow fragment fade-up" style="padding: 14px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
             <span class="badge badge--blue" style="padding: 2px 8px;">1</span>
-            <span style="font-size: 1.2rem; font-weight: 500;">Nano Banana Pro</span>
+            <span style="font-size: 1.2rem; font-weight: 600;">Nano Banana Pro</span>
           </div>
           <p class="text-xs muted" style="margin-bottom: 8px;">Google's flagship image generation</p>
-          <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6;">
-            <span style="color: var(--success);">✓</span> 2K/4K output
-            <span style="color: var(--success);">✓</span> Text renders correctly
-            <span style="color: var(--success);">✓</span> Face control
-            <span style="color: var(--success);">✓</span> Unlimited
+          <div style="font-size: 0.75rem; color: var(--pres-text-secondary); line-height: 1.6;">
+            <span style="color: var(--pres-green);">&#10003;</span> 2K/4K output &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Text renders correctly &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Face control &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Unlimited
           </div>
-          <p class="text-xs" style="color: var(--cyan); margin-top: 8px;"><strong>Best for:</strong> Starting images for video generation</p>
+          <p class="text-xs" style="color: var(--pres-cyan); margin-top: 8px;"><strong>Best for:</strong> Starting images for video generation</p>
         </div>
+
         <div class="card card--glow fragment fade-up" style="padding: 14px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
             <span class="badge badge--pink" style="padding: 2px 8px;">2</span>
-            <span style="font-size: 1.2rem; font-weight: 500;">Kling 2.6 Audio</span>
+            <span style="font-size: 1.2rem; font-weight: 600;">Kling 2.6 Audio</span>
           </div>
           <p class="text-xs muted" style="margin-bottom: 8px;">Multimodal with native audio</p>
-          <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6;">
-            <span style="color: var(--success);">✓</span> Native audio sync
-            <span style="color: var(--success);">✓</span> 1080p output
-            <span style="color: var(--success);">✓</span> Lip-sync
-            <span style="color: var(--success);">✓</span> Voice + sound
+          <div style="font-size: 0.75rem; color: var(--pres-text-secondary); line-height: 1.6;">
+            <span style="color: var(--pres-green);">&#10003;</span> Native audio sync &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> 1080p output &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Lip-sync &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Voice + sound
           </div>
-          <p class="text-xs" style="color: var(--cyan); margin-top: 8px;"><strong>Best for:</strong> Videos with speech or music</p>
+          <p class="text-xs" style="color: var(--pres-cyan); margin-top: 8px;"><strong>Best for:</strong> Videos with speech or music</p>
         </div>
+
         <div class="card card--glow fragment fade-up" style="padding: 14px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
             <span class="badge badge--orange" style="padding: 2px 8px;">3</span>
-            <span style="font-size: 1.2rem; font-weight: 500;">WAN 2.5</span>
+            <span style="font-size: 1.2rem; font-weight: 600;">WAN 2.5</span>
           </div>
           <p class="text-xs muted" style="margin-bottom: 8px;">More creative freedom</p>
-          <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6;">
-            <span style="color: var(--success);">✓</span> Uncensored option
-            <span style="color: var(--success);">✓</span> 10 second videos
-            <span style="color: var(--success);">✓</span> Camera control
-            <span style="color: var(--success);">✓</span> Multiple formats
+          <div style="font-size: 0.75rem; color: var(--pres-text-secondary); line-height: 1.6;">
+            <span style="color: var(--pres-green);">&#10003;</span> Uncensored option &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> 10 second videos &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Camera control &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Multiple formats
           </div>
-          <p class="text-xs" style="color: var(--cyan); margin-top: 8px;"><strong>Best for:</strong> Longer clips with camera motion</p>
+          <p class="text-xs" style="color: var(--pres-cyan); margin-top: 8px;"><strong>Best for:</strong> Longer clips with camera motion</p>
         </div>
+
         <div class="card card--glow fragment fade-up" style="padding: 14px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
             <span class="badge badge--green" style="padding: 2px 8px;">4</span>
-            <span style="font-size: 1.2rem; font-weight: 500;">Cinema Studio</span>
+            <span style="font-size: 1.2rem; font-weight: 600;">Cinema Studio</span>
           </div>
           <p class="text-xs muted" style="margin-bottom: 8px;">End-to-end filmmaking</p>
-          <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6;">
-            <span style="color: var(--success);">✓</span> Real camera simulation
-            <span style="color: var(--success);">✓</span> 70+ presets
-            <span style="color: var(--success);">✓</span> Pro lenses
-            <span style="color: var(--success);">✓</span> 21:9 CinemaScope
+          <div style="font-size: 0.75rem; color: var(--pres-text-secondary); line-height: 1.6;">
+            <span style="color: var(--pres-green);">&#10003;</span> Real camera simulation &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> 70+ presets &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> Pro lenses &nbsp;
+            <span style="color: var(--pres-green);">&#10003;</span> 21:9 CinemaScope
           </div>
-          <p class="text-xs" style="color: var(--cyan); margin-top: 8px;"><strong>Best for:</strong> Professional cinematic content</p>
+          <p class="text-xs" style="color: var(--pres-cyan); margin-top: 8px;"><strong>Best for:</strong> Professional cinematic content</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 15: WORKFLOW -->
+<!-- ========== SLIDE 15: WORKFLOW EXAMPLE ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge">Example Workflow</span></div>
+      <div class="header__nav">
+        <span class="badge">Example Workflow</span>
+      </div>
     </div>
     <div class="content">
       <h2 style="font-size: 1.8rem;">Suggested Workflow: Image to Video</h2>
+
       <div class="grid-2 mt-md">
         <div>
-          <div class="card fragment" style="margin-bottom: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 2rem; font-family: var(--font-serif); font-style: italic; color: var(--accent);">1</span><div><h4>Generate Your Base Image</h4><p class="text-sm muted">Use Nano Banana Pro for best quality starting point</p></div></div></div>
-          <div class="card fragment" style="margin-bottom: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 2rem; font-family: var(--font-serif); font-style: italic; color: var(--accent);">2</span><div><h4>Choose Your Video Model</h4><p class="text-sm muted">Pick based on use case (see comparison table)</p></div></div></div>
-          <div class="card fragment" style="margin-bottom: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 2rem; font-family: var(--font-serif); font-style: italic; color: var(--accent);">3</span><div><h4>Set Camera Controls</h4><p class="text-sm muted">Use Cinema Studio for professional camera motion</p></div></div></div>
+          <div class="card fragment" style="margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 2rem; color: var(--pres-purple);">1</span>
+              <div>
+                <h4>Generate Your Base Image</h4>
+                <p class="text-sm muted">Use Nano Banana Pro for best quality starting point</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card fragment" style="margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 2rem; color: var(--pres-purple);">2</span>
+              <div>
+                <h4>Choose Your Video Model</h4>
+                <p class="text-sm muted">Pick based on use case (see comparison table)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card fragment" style="margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 2rem; color: var(--pres-purple);">3</span>
+              <div>
+                <h4>Set Camera Controls</h4>
+                <p class="text-sm muted">Use Cinema Studio for professional camera motion</p>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div>
-          <div class="card fragment" style="margin-bottom: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 2rem; font-family: var(--font-serif); font-style: italic; color: var(--pink);">4</span><div><h4>Add Effects (Optional)</h4><p class="text-sm muted">Browse 250+ VFX presets for transitions and atmosphere</p></div></div></div>
-          <div class="card fragment" style="margin-bottom: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 2rem; font-family: var(--font-serif); font-style: italic; color: var(--pink);">5</span><div><h4>Motion Transfer (Advanced)</h4><p class="text-sm muted">Apply real motion from reference videos</p></div></div></div>
-          <div class="card card--glow fragment" style="margin-bottom: 12px;"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-size: 2rem; font-family: var(--font-serif); font-style: italic; color: var(--success);">6</span><div><h4>Generate & Iterate</h4><p class="text-sm muted">Run generation, adjust prompts as needed</p></div></div></div>
+          <div class="card fragment" style="margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 2rem; color: var(--pres-pink);">4</span>
+              <div>
+                <h4>Add Effects (Optional)</h4>
+                <p class="text-sm muted">Browse 250+ VFX presets for transitions and atmosphere</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card fragment" style="margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 2rem; color: var(--pres-pink);">5</span>
+              <div>
+                <h4>Motion Transfer (Advanced)</h4>
+                <p class="text-sm muted">Apply real motion from reference videos</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--glow fragment" style="margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 2rem; color: var(--pres-green);">6</span>
+              <div>
+                <h4>Generate & Iterate</h4>
+                <p class="text-sm muted">Run generation, adjust prompts as needed</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 16: TECH SPECS -->
+<!-- ========== SLIDE 16: COMPETITIVE ADVANTAGE ========== -->
 <section>
   <div class="slide">
     <div class="header">
       <div class="header__logo">Higgsfield AI</div>
-      <div class="header__nav"><span class="badge">Tech Specs</span></div>
+      <div class="header__nav">
+        <span class="badge">Positioning</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 style="font-size: 1.8rem;">Why Higgsfield vs Others</h2>
+
+      <table class="feature-table mt-md">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Strength</th>
+            <th>Weakness vs Higgsfield</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fragment">
+            <td><strong>Runway Gen-3</strong></td>
+            <td>Quality, brand trust</td>
+            <td style="color: var(--pres-green);">Single model, no aggregation</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Pika Labs</strong></td>
+            <td>Speed, simplicity</td>
+            <td style="color: var(--pres-green);">Limited controls, no Cinema Studio</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Luma Dream Machine</strong></td>
+            <td>Consistency</td>
+            <td style="color: var(--pres-green);">Fewer models, basic controls</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Kling Direct</strong></td>
+            <td>Quality</td>
+            <td style="color: var(--pres-green);">No effects library, single model</td>
+          </tr>
+          <tr class="fragment">
+            <td><strong>Sora Direct</strong></td>
+            <td>OpenAI quality</td>
+            <td style="color: var(--pres-green);">Waitlist, no professional tools</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card card--glow mt-md text-center fragment">
+        <h4>Higgsfield's Moat</h4>
+        <p style="color: var(--pres-cyan); font-size: 1.2rem;">Aggregation + Professional Tools + Effects Library</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 17: TECH SPECS ========== -->
+<section>
+  <div class="slide">
+    <div class="header">
+      <div class="header__logo">Higgsfield AI</div>
+      <div class="header__nav">
+        <span class="badge">Tech Specs</span>
+      </div>
     </div>
     <div class="split">
       <div>
         <h2 style="font-size: 1.8rem;">Technical Specifications</h2>
+
         <table class="feature-table mt-md">
-          <tr><td>Max Video Length</td><td>5-10 seconds per generation</td></tr>
-          <tr><td>Max Resolution</td><td>4K (via upscaling)</td></tr>
-          <tr><td>Audio Generation</td><td>48kHz (Kling 2.6 Audio)</td></tr>
-          <tr><td>Image Resolution</td><td>Up to 4K native (Nano Banana Pro)</td></tr>
-          <tr><td>Aspect Ratios</td><td>1:1, 16:9, 9:16, 21:9</td></tr>
+          <tr>
+            <td>Max Video Length</td>
+            <td>5-10 seconds per generation</td>
+          </tr>
+          <tr>
+            <td>Max Resolution</td>
+            <td>4K (via upscaling)</td>
+          </tr>
+          <tr>
+            <td>Audio Generation</td>
+            <td>48kHz (Kling 2.6 Audio)</td>
+          </tr>
+          <tr>
+            <td>Image Resolution</td>
+            <td>Up to 4K native (Nano Banana Pro)</td>
+          </tr>
+          <tr>
+            <td>Aspect Ratios</td>
+            <td>1:1, 16:9, 9:16, 21:9</td>
+          </tr>
         </table>
       </div>
       <div>
         <div class="card">
           <h4>Company Info</h4>
           <table class="feature-table mt-sm">
-            <tr><td>Founded</td><td>2023 (ex-Snap AI leads)</td></tr>
-            <tr><td>CEO</td><td>Alex Mashrabov</td></tr>
-            <tr><td>Funding</td><td>$50M Series A (Sept 2025)</td></tr>
-            <tr><td>Valuation</td><td>$1.3B (Jan 2026)</td></tr>
-            <tr><td>Users</td><td>11M+</td></tr>
-            <tr><td>Social Reach</td><td>1.2B impressions</td></tr>
+            <tr>
+              <td>Founded</td>
+              <td>2023 (ex-Snap AI leads)</td>
+            </tr>
+            <tr>
+              <td>CEO</td>
+              <td>Alex Mashrabov</td>
+            </tr>
+            <tr>
+              <td>Funding</td>
+              <td>$50M Series A (Sept 2025)</td>
+            </tr>
+            <tr>
+              <td>Valuation</td>
+              <td>$1.3B (Jan 2026)</td>
+            </tr>
+            <tr>
+              <td>Users</td>
+              <td>11M+</td>
+            </tr>
+            <tr>
+              <td>Social Reach</td>
+              <td>1.2B impressions</td>
+            </tr>
           </table>
         </div>
       </div>
@@ -666,21 +1407,40 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
   </div>
 </section>
 
-<!-- SLIDE 18: QUICK REFERENCE + CTA -->
+<!-- ========== SLIDE 18: QUICK REFERENCE ========== -->
 <section>
-  <div class="slide slide--section slide--center">
+  <div class="slide slide--gradient slide--center">
     <div class="content flex-center" style="flex-direction: column;">
       <h2>Quick Reference Card</h2>
+
       <div class="grid-3 mt-lg" style="max-width: 1000px;">
-        <div class="card"><h4 style="color: var(--cyan);">Best for Speed</h4><p class="text-sm">Minimax Hailuo</p></div>
-        <div class="card"><h4 style="color: var(--pink);">Best for Audio</h4><p class="text-sm">Kling 2.6 Audio</p></div>
-        <div class="card"><h4 style="color: var(--accent);">Best for Camera</h4><p class="text-sm">Cinema Studio</p></div>
-        <div class="card"><h4 style="color: var(--orange);">Best for Freedom</h4><p class="text-sm">WAN 2.5</p></div>
-        <div class="card"><h4 style="color: var(--success);">Best Quality</h4><p class="text-sm">Sora 2 / Veo 3.1</p></div>
-        <div class="card"><h4 style="color: var(--blue);">Best for Images</h4><p class="text-sm">Nano Banana Pro</p></div>
+        <div class="card">
+          <h4 style="color: var(--pres-cyan);">Best for Speed</h4>
+          <p class="text-sm">Minimax Hailuo</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--pres-pink);">Best for Audio</h4>
+          <p class="text-sm">Kling 2.6 Audio</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--pres-purple);">Best for Camera</h4>
+          <p class="text-sm">Cinema Studio</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--pres-orange);">Best for Freedom</h4>
+          <p class="text-sm">WAN 2.5</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--pres-green);">Best Quality</h4>
+          <p class="text-sm">Sora 2 / Veo 3.1</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--pres-blue);">Best for Images</h4>
+          <p class="text-sm">Nano Banana Pro</p>
+        </div>
       </div>
-      <div class="mt-lg" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-        <button onclick="window.open('https://higgsfield.ai/?utm_source=GodaGo', '_blank')" class="btn" style="pointer-events: auto !important; cursor: pointer;">Try Higgsfield Free</button>
+
+      <div class="mt-lg">
         <p class="text-sm muted">higgsfield.ai</p>
       </div>
     </div>
@@ -690,48 +1450,33 @@ a.btn { display: inline-flex !important; pointer-events: auto !important; z-inde
     </div>
   </div>
 
-  <!-- Fixed CTA outside of Reveal.js -->
-  <div id="floating-cta" style="position: fixed; bottom: 30px; left: 30px; z-index: 99999;">
-    <button id="cta-button" style="
-      background: #7b8fa8;
-      color: #0a0a0a;
-      border: none;
-      padding: 16px 32px;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      box-shadow: 0 4px 20px rgba(123, 143, 168, 0.4);
-    ">Try Higgsfield Free</button>
-  </div>
-
-  <script>
-    document.getElementById('cta-button').onclick = function() {
-      window.open('https://higgsfield.ai/?utm_source=GodaGo', '_blank');
-    };
-  </script>
-
+  <!-- Reveal.js Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+
   <script>
     Reveal.initialize({
-      hash: true, slideNumber: true, controls: true, controlsLayout: 'bottom-right',
-      controlsBackArrows: 'faded', progress: true, center: false, transition: 'slide',
-      backgroundTransition: 'fade', width: 1280, height: 720, margin: 0,
-      minScale: 0.2, maxScale: 2, autoAnimate: true, autoAnimateDuration: 0.7,
+      hash: true,
+      slideNumber: true,
+      controls: true,
+      controlsLayout: 'bottom-right',
+      controlsBackArrows: 'faded',
+      progress: true,
+      center: false,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      width: 1280,
+      height: 720,
+      margin: 0,
+      minScale: 0.2,
+      maxScale: 2,
+      autoAnimate: true,
+      autoAnimateDuration: 0.7,
       plugins: [RevealHighlight]
     });
-    lucide.createIcons();
 
-    // Make CTA buttons clickable - stop Reveal.js from capturing these clicks
-    document.querySelectorAll('a.btn').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        window.open(this.href, '_blank');
-      });
-    });
+    // Initialize Lucide icons
+    lucide.createIcons();
   </script>
 </body>
 </html>
